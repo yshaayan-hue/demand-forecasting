@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Demand Forecasting Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Demand Forecasting Dashboard</h1>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Actual Demand</h3>
+                <p>{{ actual_demand }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Forecast Demand</h3>
+                <p>{{ forecast_demand }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Forecast Difference</h3>
+                <p>{{ forecast_difference }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
