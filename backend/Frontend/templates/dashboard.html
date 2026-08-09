@@ -11,6 +11,7 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}"
     >
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -38,7 +39,16 @@
 
         </div>
 
+        <section class="chart-panel">
+            <h2>Demand by Region</h2>
+            <div class="chart-container">
+                <canvas id="demandByRegionChart" aria-label="Demand by region bar chart"></canvas>
+            </div>
+        </section>
+
     </div>
+
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
 
 </body>
 

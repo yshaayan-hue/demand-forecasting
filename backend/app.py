@@ -4,8 +4,8 @@ import sqlite3
 
 app = Flask(
     __name__,
-    template_folder="../frontend/templates",
-    static_folder="../frontend/static"
+    template_folder="Frontend/templates",
+    static_folder="Frontend/static"
 )
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -51,5 +51,24 @@ def dashboard():
     )
 
 
+@app.route("/api/demand-by-region")
+def demand_by_region():
+    connection = get_db_connection()
+    rows = connection.execute("""
+        SELECT region, SUM(units_sold) AS total_demand
+        FROM demand_data
+        GROUP BY region
+        ORDER BY total_demand DESC
+    """).fetchall()
+    connection.close()
+
+    return [dict(row) for row in rows]
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="127.0.0.1",
+        port=5001,
+        debug=False,
+        use_reloader=False
+    )
